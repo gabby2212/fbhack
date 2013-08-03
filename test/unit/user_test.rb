@@ -13,4 +13,9 @@ describe User do
     payment = alice.received_payments.build
     alice.received_payments.must_equal [payment]
   end
+
+  it "has_many debts" do
+    debt = alice.debts.build
+    alice.debts.must_equal [debt]
+  end
 end
