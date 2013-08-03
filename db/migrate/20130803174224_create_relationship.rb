@@ -1,4 +1,4 @@
-class CreateReltionship < ActiveRecord::Migration
+class CreateRelationship < ActiveRecord::Migration
  def change
   	create_table :relationships do |t|
       t.decimal :amount
