@@ -13,6 +13,13 @@
 
 ActiveRecord::Schema.define(:version => 20130803212028) do
 
+  create_table "bubbles", :force => true do |t|
+    t.decimal "amount"
+    t.integer "group_id"
+    t.integer "from_id"
+    t.integer "to_id"
+  end
+
   create_table "debts", :force => true do |t|
     t.decimal  "amount"
     t.integer  "lender_id"
@@ -34,13 +41,6 @@ ActiveRecord::Schema.define(:version => 20130803212028) do
     t.decimal "amount"
     t.integer "sender_id"
     t.integer "receiver_id"
-  end
-
-  create_table "relationships", :force => true do |t|
-    t.decimal "amount"
-    t.integer "group_id"
-    t.integer "from_id"
-    t.integer "to_id"
   end
 
   create_table "users", :force => true do |t|
