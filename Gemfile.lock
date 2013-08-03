@@ -57,6 +57,10 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
+    minitest (4.7.5)
+    minitest-spec-rails (4.7.4)
+      minitest (~> 4.7)
+      rails (<= 4.0)
     multi_json (1.7.7)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
@@ -115,6 +119,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
+  minitest-spec-rails
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sqlite3
