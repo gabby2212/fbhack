@@ -7,11 +7,20 @@ class PaymentsController < ApplicationController
 
 	def create
 		@relation = Relationship.find(:from_id => current_user.id && :to_id => params[:user_id])
+		@inverse_relation = Relationship.find(:from_id => params[:user_id] && :to_id => current_user.id)
 		if @relation
 			@relation.amount += params[:amount]
 		else
+			#no idea how to build this
 			current_user.Relationship.build()
 		end
+		if @inverse_relation
+			@inverse_relation.amount -= params[:amount]
+		else
+			#build same thing as before with users other way around
+			current_user.Relationship.build()
+		end
+
 
 		@path_so_far = Path.initialize(params[:amount], [params[:user]])
 		@path_so_far = find_path(user, amount, @path_so_far)
