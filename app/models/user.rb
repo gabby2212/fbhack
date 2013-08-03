@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :sent_payments, class_name: 'Payment', foreign_key: 'sender_id'
   has_many :received_payments, class_name: 'Payment', foreign_key: 'receiver_id' 
+
+  # the people you owe money to
+  has_many :debts, class_name: 'Debt', foreign_key: 'borrower_id'
 end
