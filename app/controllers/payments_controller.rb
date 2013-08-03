@@ -6,6 +6,13 @@ class PaymentsController < ApplicationController
 	end
 
 	def create
+		@relation = Relationship.find(:from_id => current_user.id && :to_id => params[:user_id])
+		if @relation
+			@relation.amount += params[:amount]
+		else
+			current_user.Relationship.build()
+		end
+
 		@path_so_far = Path.initialize(params[:amount], [params[:user]])
 		@path_so_far = find_path(user, amount, @path_so_far)
 		@payment = current_user.payments.build

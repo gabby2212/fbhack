@@ -11,27 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130803212028) do
-
-  create_table "bubbles", :force => true do |t|
-    t.decimal "amount"
-    t.integer "group_id"
-    t.integer "from_id"
-    t.integer "to_id"
-  end
-
-  create_table "debts", :force => true do |t|
-    t.decimal  "amount"
-    t.integer  "lender_id"
-    t.integer  "borrower_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "debts_groups", :force => true do |t|
-    t.integer "debt_id"
-    t.integer "group_id"
-  end
+ActiveRecord::Schema.define(:version => 20130803174233) do
 
   create_table "groups", :force => true do |t|
     t.string "name"
@@ -41,6 +21,12 @@ ActiveRecord::Schema.define(:version => 20130803212028) do
     t.decimal "amount"
     t.integer "sender_id"
     t.integer "receiver_id"
+  end
+
+  create_table "relationships", :force => true do |t|
+    t.decimal "amount"
+    t.integer "from_id"
+    t.integer "to_id"
   end
 
   create_table "users", :force => true do |t|
