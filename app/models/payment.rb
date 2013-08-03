@@ -1,4 +1,4 @@
 class Payment < ActiveRecord::Base
-	belongs_to :user
-	has_one :user
+	belongs_to :sender, class_name: 'User'
+	belongs_to :receiver, class_name: 'User'
 end
