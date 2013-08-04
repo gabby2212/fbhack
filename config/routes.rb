@@ -4,7 +4,7 @@ VenOwe::Application.routes.draw do
   resources :payments
   resources :relationships
 
-  match 'test' => 'welcome#test'
+  match 'graph' => 'welcome#test'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
