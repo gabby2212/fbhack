@@ -2,14 +2,12 @@
 <%= javascript_include_tag "#{socketio_url}/socket.io/socket.io.js" %>
 
 <div class="container">
-  <h1>ALL THE PAYMENTS!!!!!!!!!</h1>
-  <p>ALL THE USERS!!!!!!!!!!!!!!!!!!</p>
-  <div id="payments-graph"></div>
-
   <canvas id="viewport" width="800" height="600"></canvas>
+  <%= render 'layouts/footer' %>
 </div>
 
 <div id="users" data-users="<%= @users_json %>"></div>
+
 
 
 <script type="text/javascript">
