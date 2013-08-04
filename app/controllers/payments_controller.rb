@@ -1,7 +1,9 @@
 class PaymentsController < ApplicationController
+	before_filter :authenticate_user!
 
 	def index
-		@payments = current_user.payments
+		@sent_payments = current_user.sent_payments
+		@received_payments = current_user.received_payments
 	end
 
 	def new

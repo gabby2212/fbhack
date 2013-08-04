@@ -1,0 +1,24 @@
+<div>
+  <h1>Your balance: <%= number_to_currency current_user.balance %></h1>
+</div>
+<div>
+  <h1>Sent Payments</h1>
+  <ul>
+  <% @sent_payments.each do |payment| %>
+    <li>To <%= payment.receiver.first_name %> for <%= number_to_currency payment.amount %></li>
+  <% end %>
+  </ul>
+</div>
+
+<div>
+  <h1>Received Payments</h1>
+  <ul>
+  <% @received_payments.each do |payment| %>
+    <li>From <%= payment.sender.first_name %> for <%= number_to_currency payment.amount %></li>
+  <% end %>
+  </ul>
+</div>
+
+<div>
+  <%= link_to 'Create a payment', new_payment_path %>
+</div>
