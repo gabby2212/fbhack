@@ -1,14 +1,14 @@
 <div class = "header">
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <%= form_for(User.new, :as => 'user', :url => session_path('user')) do |f| %>
   <div id = "header-wrapper">
     <div class="site-title"><strong>Ven-Owe</strong></div>
     <div id="header-nav">
       <div class="input-inline" >
-        <input type="text" style="margin-top:10px" class="input-medium" placeholder="Email">
-        <%= f.email_field :email, :autofocus => true %></div>
+       <!--  <input type="text" style="margin-top:10px" class="input-medium" placeholder="Email"> -->
+        <div><%= f.email_field :email, :autofocus => true %></div>
 
-        <input type="password" style="margin-top:10px" class="input-medium" placeholder="Password">
-        <div><%= f.label :password %><br />
+        <!-- <input type="password" style="margin-top:10px" class="input-medium" placeholder="Password"> -->
+        <div><%= f.password_field :password, :autofocus => true %></div>
 
         <button type="submit" class="btn btn-primary">Sign in</button>
       </div>
