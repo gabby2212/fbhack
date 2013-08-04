@@ -1,4 +1,38 @@
 @CHARSET "UTF-8";
+
+/*-------------------------------------------------------------*/
+/* FONTS  */
+
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+/*-------------------------------------------------------------*/
+/* GLOBAL DEFAULTS */
+
+* { 
+	margin:0; 
+	padding: 0;
+	font-family: 'Lato', sans-serif;
+	line-height: 1;
+	text-align: left;
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	overflow: hidden;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	zoom: 1; /* IE < 8 */
+}
+
+
 .body{
 	background: #e4e3d5;
 }
@@ -20,13 +54,13 @@
 .site-title{
 	padding-top: 25px;
 	padding-left: 50px; 
- 	font-family: 'Indie Flower', cursive;
- 	color:#FFFFFF;
-    font-size: 33px;
-    font-weight: 900;
-    float: left;
-    margin-top: -10px;
-    
+	font-family: 'Indie Flower', cursive;
+	color:#FFFFFF;
+	font-size: 33px;
+	font-weight: 900;
+	float: left;
+	margin-top: -10px;
+
 }
 .carousel-image{
 	height:370px;
@@ -59,8 +93,8 @@
 	padding:10px; 
 	overflow:scroll-y;
 	/*background-color: #B9D7D9;*/
-    /*#668284*/
-  /*   background-color: #F4EB90; */
+	/*#668284*/
+	/*   background-color: #F4EB90; */
 }
 .signup-container{
 	display: block;
@@ -81,7 +115,7 @@
 	border-radius: 3px;
 	
 	
-/* background-color:rgba(59, 117, 250, 0.1); */
+	/* background-color:rgba(59, 117, 250, 0.1); */
 }
 
 
@@ -121,11 +155,11 @@
 
 
 #cy {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
 }
 
 
