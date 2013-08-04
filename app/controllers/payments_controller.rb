@@ -27,7 +27,11 @@ class PaymentsController < ApplicationController
 		@payment = current_user.sent_payments.build
 		@payment.amount = params[:payment][:amount]
 		@payment.receiver_id = params[:payment][:receiver_id]
-		@payment.save
+		if @payment.save
+			redirect_to '/payments/new'
+		else
+			render :new
+		end
 		# @path_so_far = Path.new(params[:amount], [params[:user]])
 		# @path_so_far = find_path(user, amount, @path_so_far)
 	end
