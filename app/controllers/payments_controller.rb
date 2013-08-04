@@ -10,31 +10,15 @@ class PaymentsController < ApplicationController
 		@payment = Payment.new
 	end
 	def create
-		# current_amount = params[:payment][:amount]
-		# @relationship = Relationship.where(from_id: current_user.id, to_id: params[:payment][:receiver_id])
-		# @inverse_relationship = Relationship.where(from_id: params[:payment][:receiver_id], to_id: current_user.id)
-		# if @relationship == nil
-		# 	@relationship = Relationship.create(amount: current_amount, from_id: current_user.id, to_id: params[:payment][:receiver_id])
-		# 	@relationship.save
-		# else
-		# 	@relationship.amount += current_amount
-		# end
-		# if @inverse_relationship == nil
-		# 	@inverse_relationship = Relationship.create(amount: current_amount, from_id: params[:payment][:receiver_id], to_id: current_user.id)
-		# 	@inverse_relationship.save		 	
-		# else
-		# 	@inverse_relationship.amount -= current_amount			
-		# end
-
 		@payment = current_user.sent_payments.build
-    @payment.receiver = User.find_by_email(params[:to])
-    @payment.amount = params[:amount]
-    
-    if @payment.save
-		  redirect_to payments_path
-    else
-      render :new
-    end
+    	@payment.receiver = User.find_by_email(params[:to])
+    	@payment.amount = params[:amount]
+    	if @payment.save
+		  	redirect_to payments_path
+		  	Relationship.update_relationship(current_user.id, @payment.receiver_id, @payment.amount)
+    	else
+      		render :new
+    	end
 
 		# @path_so_far = Path.new(params[:amount], [params[:user]])
 		# @path_so_far = find_path(user, amount, @path_so_far)
