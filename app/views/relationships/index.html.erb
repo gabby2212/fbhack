@@ -1,46 +1,54 @@
-
+<div class = "container-wrapper">
 <h3>People You Owe</h3>
+<%valid = false%>
+<% @relationships.each do |r|%>
+<% if User.find_by_id(r.from_id) == current_user%>
+<% valid = true%>
+<% end %>
+<% end %>
+
+<% if valid == true %>
 <table class="center table table-hover" style="background-color: white">
-        <thead><tr><th> person </th><th> amount </th> </tr></thead>
-        <% @relationships.each do |r| %>
-            <tr>
-            <% if User.find_by_id(r.from_id) == current_user%>
-            	<td><%= User.find_by_id(r.to_id).email %></td>
-            	<td><%=r.amount%></td>
-  			<% end %>
+    <thead><tr><th> person </th><th> amount </th> </tr></thead>
+    <% @relationships.each do |r| %>
+        <tr>
+        <% if User.find_by_id(r.from_id) == current_user%>
+        	<td><%= User.find_by_id(r.to_id).email %></td>
+        	<td><%=r.amount%></td>
+			<% end %>
 
-            </tr>
-
-        <% end %>
+        </tr>
+    <% end %>
         
-       </table>
+</table>
+<% else %>
+<p>You don't owe anyone money</p>
+<% end %>
 
 
 <h3>People Who Owe You</h3>
+<%valid = false%>
+<% @relationships.each do |r|%>
+<% if User.find_by_id(r.to_id) == current_user%>
+<% valid = true%>
+<% end %>
+<% end%>
+<% if valid == true %>
 <table class="center table table-hover" style="background-color: white">
         <thead><tr><th> person </th><th> amount </th> </tr></thead>
         <% @relationships.each do |r| %>
-
             <tr>
-
             <% if User.find_by_id(r.to_id) == current_user%>
             	<td><%= User.find_by_id(r.from_id).email %></td>
             	<td><%=r.amount%></td>
   			<% end %>
-
-           
-            
-
             </tr>
-
-        <% end %>
-        
-        
-    </table>
-
-
-
-
+        <% end %>        
+</table>
+<% else %>
+<p>No one owes you money</p>
+<%end%>
 <div>
   <%= link_to 'Home', new_payment_path %>
+</div>
 </div>

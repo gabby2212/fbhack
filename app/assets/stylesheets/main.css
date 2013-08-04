@@ -2,7 +2,7 @@
 .body{
 	background: #e4e3d5;
 }
-#container-wrapper {
+.container-wrapper {
 	margin: 0px auto;
 	width: 1000px;
 }
