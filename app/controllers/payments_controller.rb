@@ -1,32 +1,35 @@
 class PaymentsController < ApplicationController
-	before_filter :require_current_user
 
 	def index
 		@payments = current_user.payments
 	end
 
-	def create
-		@relation = Relationship.where(from_id: current_user.id, to_id: params[:receiver_id])
-		@inverse_relation = Relationship.find(from_id: params[:receiver_id], :to_id: current_user.id)
-		Rails.logger.debug("here")
-		if @relation
-		 	@relation.amount += params[:amount]
-		else
-			@relation = Relationship.create(amount: params[:amount], from_id: current_user.id, to_id: params[:receiver_id])
-			@relation.save
-		end
-		if @inverse_relation
-		 	@inverse_relation.amount -= params[:amount]
-		else
-			@inverse_relation = Relationship.create(amount: params[:amount], from_id: params[:receiver_id], to_id: current_user.id)
-			@inverse_relation.save
-		end
-
+	def new
 		@payment = Payment.new
-		@payment.submit(params[:payment])
+	end
+	def create
+		# @relation = Relationship.where(from_id: current_user.id, to_id: params[:receiver_id])
+		# @inverse_relation = Relationship.find(from_id: params[:receiver_id], :to_id: current_user.id)
+		# Rails.logger.debug("here")
+		# if @relation
+		#  	@relation.amount += params[:amount]
+		# else
+		# 	@relation = Relationship.create(amount: params[:amount], from_id: current_user.id, to_id: params[:receiver_id])
+		# 	@relation.save
+		# end
+		# if @inverse_relation
+		#  	@inverse_relation.amount -= params[:amount]
+		# else
+		# 	@inverse_relation = Relationship.create(amount: params[:amount], from_id: params[:receiver_id], to_id: current_user.id)
+		# 	@inverse_relation.save
+		# end
+
+		@payment = current_user.sent_payments.build
+		@payment.amount = params[:payment][:amount]
+		@payment.receiver_id = params[:payment][:receiver_id]
+		@payment.save
 		# @path_so_far = Path.new(params[:amount], [params[:user]])
 		# @path_so_far = find_path(user, amount, @path_so_far)
-		@payment
 	end
 
 	def find_path(user, amount, path)
