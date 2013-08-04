@@ -15,36 +15,46 @@
 		</div>
 	</div>
 </div>
-<%= form_for [@payment] do |f| %>
-<div id = "container-wrapper">
-	<div class = "highlight">
-		<div id = "pay-container">
-			<div id = "paytosome-container">
-				<div class = "input-group" style = "margin-left:23px">
-					<button style =" height:29px; width:100px">Pay</button>
-					<!-- input type="text" class= "input-large" style = "margin-left:-4px; margin-top:10px;height:21px; width:450px" placeholder="Pay to Someone"> -->
-					<%= f.text_field :receiver_id%>
-				</div>
-				<div id = "amount-container">
-					<!-- <textarea id = "payment-message" placeholder = "$10 for blahblahblah"></textarea> -->
-					<%= f.text_field :amount %>	
-				</div>
-				<div id = "send-message-container">
-				    <div id = "haha">
-					<button class = "btn btn-inverse" style= "float:right">send</button></div>
-				</div>
-				<div id = "display-message-container">
-					
-				</div>
-			</div>
 
-			
+<div class="container">
+<%= form_tag payments_path, class: 'form-horizontal' do %>
+  
+	<% if @payment.errors.any? %>
+    <div class="alert alert-error" style="margin-top: 20px">
+      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+      <ul>
+      <% @payment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <legend>Make a payment</legend>
+  <div class="control-group">
+    <%= label_tag :to, 'To', class: 'control-label' %>
+    <div class="controls">
+      <%= text_field_tag :to, '', placeholder: 'john.doe@example.com', class: 'input-large' %>
+    </div>
+  </div>
 
-			
-		</div>
+  <div class="control-group">
+    <%= label_tag :amount, 'Amount', class: 'control-label' %>
+    <div class="controls">
+    <div class="input-prepend">
+      <span class="add-on">$</span>
+      <%= number_field_tag :amount, '', placeholder: 10, class: 'input-small' %>
+    </div>
+    </div>
 	</div>
-</div>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= submit_tag :pay, class: 'btn' %>
+    </div>
+  </div>
+
 <% end %>
+</div>
 
 
 
