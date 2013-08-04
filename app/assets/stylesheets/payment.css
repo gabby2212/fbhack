@@ -1,43 +1,9 @@
-/*the same stuff in the index page*/
-.body {
-	background: #e4e3d5;
-}
-#container-wrapper {
-	margin: 0px auto;
-	width: 1000px;
-}
-#header-wrapper {
-	margin: 0px auto;
-	width:  1000px;
-}
-.header{
-	height:60px ;
-	background: #373737;
-	border:1px solid #CCC;
-	/*width:1440px;*/
-	margin:0px auto;
-}
-
-.site-title {
-	padding-top: 25px;
-	padding-left: 50px; 
- 	font-family: 'Indie Flower', cursive;
- 	color:#FFFFFF;
-    font-size: 33px;
-    font-weight: 900;
-    float: left;
-    
-}
-
-#header-nav {
+#logout-header-nav {
 	display: block;
 	float: right;
 	width: 310px;
 	margin-top: 15px;
-
 }
-
-/************************new stuff**********************************/
 #wrapper-account-name {
 	width: 200px;
 	display:inline-block;
@@ -67,5 +33,19 @@
 	border-left: 1px solid #CCCCCC;
 	border-right: 1px solid #CCCCCC;
 	border-top: 1px solid #CCCCCC;
-	width: 600px;
+	width: 700px;
+}
+#payment-message {
+	margin-left: 70px;
+	margin-top: -11px;
+	width: 551px;
+}
+
+#send-message-container {
+	border-left:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+	margin-left: 70px;
+	margin-top: -11px;
+	width:551px;
 }
