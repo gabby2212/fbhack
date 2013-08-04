@@ -1,8 +1,5 @@
 <div class = "container-wrapper">
 
-  <h1>Your balance: <%= number_to_currency current_user.balance %></h1>
-
-
   <h1>Sent Payments</h1>
  
   <table class="center table table-hover" style="background-color: white">
@@ -14,8 +11,8 @@
 
         </tr>
         
-       </table>
   <% end %>
+  </table>
 
 
 
@@ -31,9 +28,8 @@
 
         </tr>
         
-       </table>
   <% end %>
-
+</table>
 
 <div>
   <%= link_to 'Create a payment', new_payment_path %>

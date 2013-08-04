@@ -2,19 +2,18 @@
 <h3>People You Owe</h3>
 
 <table class="center table table-hover" style="background-color: white">
-        <thead><tr><th> person </th><th> amount </th> </tr></thead>
-        <% @relationships.each do |r| %>
-            <tr>
-            <% if User.find_by_id(r.from_id) == current_user%>
-            	<td><%= User.find_by_id(r.to_id).email %></td>
-            	<td><%=r.amount%></td>
-  			<% end %>
+    <thead><tr><th> person </th><th> amount </th> </tr></thead>
+    <% @relationships.each do |r| %>
+        <tr>
+        <% if User.find_by_id(r.from_id) == current_user%>
+        	<td><%= User.find_by_id(r.to_id).email %></td>
+        	<td><%=r.amount%></td>
+			<% end %>
 
-            </tr>
-
-        <% end %>
+        </tr>
+    <% end %>
         
-       </table>
+</table>
 
 
 <h3>People Who Owe You</h3>
