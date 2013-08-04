@@ -21,19 +21,36 @@
 
 .highlight {
 	padding: 9px 14px;
-	margin-bottom: 14px;
+	margin: 14px;
 	background-color: #f7f7f9;
 	border: 1px solid #e1e1e8;
 	border-radius: 4px;
 	webkit-border-radius:4px;
 	moz-border-radius:4px;
 }
-
+#wrapper-pay-container {
+	width:960px;
+	margin: 0px auto;
+}
 #pay-container {
+	padding: 15px;
 	border-left: 1px solid #CCCCCC;
 	border-right: 1px solid #CCCCCC;
 	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	border-radius: 5px;
+	margin: auto 0px;
+	webkit-border-radius:5px;
+	moz-border-radius:5px;
+	height:400px;
 	width: 700px;
+	/*background: #CCCCCC;*/
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(131, 123, 123, 0.97)
+), to(rgba(94, 86, 86, 0.4)
+));
+/*	background: -moz-linear-gradient(#f9d835, #f3961c);
+	background: -o-linear-gradient(#f9d835, #f3961c);
+	background: linear-gradient(#f9d835, #f3961c);*/
 }
 #payment-message {
 	margin-left: 70px;
