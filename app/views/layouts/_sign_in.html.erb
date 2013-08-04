@@ -5,18 +5,17 @@
     <div id = "logout-header-nav">
       <!--this is the place to show the username and logout-->
       <div id = "wrapper-account-name">
-        <div id = "account-name">Account:    <%= current_user.email%> 
-        </div>
+        <div id = "account-name"><%= current_user.email%></div>
       </div>
-            <div id = "wrapper-logout">
-        <button type="submit" class="btn btn-primary" style ="display:inline-block;">Log out</button>
-       </div>
+      <div id = "wrapper-logout">
+        <%= link_to 'Log out', destroy_user_session_path, class: 'btn btn-primary', method: :delete %>
+      </div>
     </div>
   </div>
 </div>
   
 <% else %>
-  <div class = "header">
+<div class = "header">
   <%= form_for(User.new, :as => 'user', :url => session_path('user')) do |f| %>
     <div id = "header-wrapper">
       <div class="site-title"><strong>Ven-Owe</strong></div>
