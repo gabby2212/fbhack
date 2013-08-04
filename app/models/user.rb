@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
 		@visited_users = Set.new
 	end
 
+
 	def indirect_debts(root_user, user, max_amount_owed)  
 		# when descending, if we have seen this debtor already, then there is a cycle
 		user.debtors.each do |debtor|
@@ -54,4 +55,9 @@ class User < ActiveRecord::Base
 		end
 		clear_visited_users
 	end
+
+  def balance
+    sent_payments.sum(:amount) - received_payments.sum(:amount)
+  end
+
 end
