@@ -2,6 +2,7 @@ class Relationship < ActiveRecord::Base
 	attr_accessible :amount, :from_id, :to_id
 
 	def self.update_relationship(from, to, amount)
+		@users_involved = [from, to].sort.join("_")
 		@relationship = Relationship.where(from_id: from, to_id: to).first
 		@inverse_relationship = Relationship.where(from_id: to, to_id: from).first
 		if @relationship == nil

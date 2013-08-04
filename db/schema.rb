@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130803174233) do
+ActiveRecord::Schema.define(:version => 20130804053812) do
 
   create_table "groups", :force => true do |t|
     t.string "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130803174233) do
     t.decimal "amount"
     t.integer "from_id"
     t.integer "to_id"
+    t.string  "users_involved"
   end
 
   create_table "users", :force => true do |t|
