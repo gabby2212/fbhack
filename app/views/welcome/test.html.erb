@@ -1,3 +1,6 @@
+<% socketio_url = Rails.env.production? ? '' : 'http://localhost:5001' %>
+<%= javascript_include_tag "#{socketio_url}/socket.io/socket.io.js" %>
+
 <div class="container">
   <h1>ALL THE PAYMENTS!!!!!!!!!</h1>
   <p>ALL THE USERS!!!!!!!!!!!!!!!!!!</p>
@@ -87,6 +90,19 @@
         sys.addEdge(user.id, receiverId, payment);
       }
     }
+
+    var socket = io.connect("<%= socketio_url %>");
+    socket.on('connect', function() {
+      console.log("Connected to socketio")
+    })
+    socket.on('hawala:userCreated', function(userJson) {
+      user = JSON.parse(userJson);
+      sys.addNode(user.id, user);
+    })
+    socket.on('hawala:paymentCreated', function(paymentJson) {
+      payment = JSON.parse(paymentJson);
+      sys.addEdge(payment.sender_id, payment.receiver_id, payment);
+    })
 
   });
   

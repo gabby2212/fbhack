@@ -16,6 +16,7 @@ class PaymentsController < ApplicationController
     	if @payment.save
 		  	redirect_to payments_path
 		  	Relationship.update_relationship(current_user.id, @payment.receiver_id, @payment.amount)
+		  	REDIS.publish 'hawala:paymentCreated', PaymentSerializer.new(@payment).to_json(root: false)
     	else
       		render :new
     	end

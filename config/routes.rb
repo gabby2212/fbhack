@@ -1,7 +1,7 @@
 VenOwe::Application.routes.draw do
-  devise_for :users
-  resources :payments
-
+  devise_for :users, controllers: { registrations: "users" }
+  resources :payments, only: [:index, :new, :create]
+  
   match 'test' => 'welcome#test'
   # The priority is based upon order of creation:
   # first created -> highest priority.
