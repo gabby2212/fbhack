@@ -10,24 +10,24 @@ class PaymentsController < ApplicationController
 		@payment = Payment.new
 	end
 	def create
-		# @relation = Relationship.where(from_id: current_user.id, to_id: params[:receiver_id])
-		# @inverse_relation = Relationship.find(from_id: params[:receiver_id], :to_id: current_user.id)
-		# Rails.logger.debug("here")
-		# if @relation
-		#  	@relation.amount += params[:amount]
-		# else
-		# 	@relation = Relationship.create(amount: params[:amount], from_id: current_user.id, to_id: params[:receiver_id])
-		# 	@relation.save
-		# end
-		# if @inverse_relation
-		#  	@inverse_relation.amount -= params[:amount]
-		# else
-		# 	@inverse_relation = Relationship.create(amount: params[:amount], from_id: params[:receiver_id], to_id: current_user.id)
-		# 	@inverse_relation.save
-		# end
+		current_amount = params[:payment][:amount]
+		@relationship = Relationship.where(from_id: current_user.id, to_id: params[:payment][:receiver_id])
+		@inverse_relationship = Relationship.where(from_id: params[:payment][:receiver_id], to_id: current_user.id)
+		if @relationship == nil
+			@relationship = Relationship.create(amount: current_amount, from_id: current_user.id, to_id: params[:payment][:receiver_id])
+			@relationship.save
+		else
+			@relationship.amount += current_amount
+		end
+		if @inverse_relationship == nil
+			@inverse_relationship = Relationship.create(amount: current_amount, from_id: params[:payment][:receiver_id], to_id: current_user.id)
+			@inverse_relationship.save		 	
+		else
+			@inverse_relationship.amount -= current_amount			
+		end
 
 		@payment = current_user.sent_payments.build
-		@payment.amount = params[:payment][:amount]
+		@payment.amount = current_amount
 		@payment.receiver_id = params[:payment][:receiver_id]
 		if @payment.save
 			redirect_to '/payments/new'

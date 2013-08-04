@@ -5,7 +5,7 @@
   <h1>Sent Payments</h1>
   <ul>
   <% @sent_payments.each do |payment| %>
-    <li>To <%= payment.receiver.first_name %> for <%= number_to_currency payment.amount %></li>
+    <li>To <%= payment.receiver.email %> for <%= number_to_currency payment.amount %></li>
   <% end %>
   </ul>
 </div>
