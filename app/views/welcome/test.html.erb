@@ -1,0 +1,93 @@
+<div class="container">
+  <h1>ALL THE PAYMENTS!!!!!!!!!</h1>
+  <p>ALL THE USERS!!!!!!!!!!!!!!!!!!</p>
+  <div id="payments-graph"></div>
+
+  <canvas id="viewport" width="800" height="600"></canvas>
+</div>
+
+<div id="users" data-users="<%= @users_json %>"></div>
+
+
+<script type="text/javascript">
+  $(function() {
+
+    
+
+    var renderer = function(canvas) {
+      var ctx = canvas.getContext('2d');
+      var particleSystem;
+
+      var clearCanvas = function() {
+        canvas.width = canvas.width;
+      }
+
+      return {
+        init: function(system) {
+          particleSystem = system;
+          particleSystem.screenSize(canvas.width, canvas.height);
+          particleSystem.screenPadding(80)
+        },
+
+        redraw: function() {
+          clearCanvas();
+          var drawNode = function(point, radius, data) {
+            ctx.beginPath();
+            
+            ctx.fillStyle = "rgb(100,100,200)";
+
+            ctx.arc(point.x, point.y, radius, 0, 2 * Math.PI, false);
+            ctx.fill();
+
+            ctx.font = "12px Helvetica"
+            ctx.textAlign = "center"
+            ctx.fillStyle = "rgba(0,0,0, .666)"
+            ctx.fillText(data.email||"", point.x, point.y+4)
+            ctx.fillText(data.email||"", point.x, point.y+4)
+
+          }
+
+          particleSystem.eachEdge(function(edge, p1, p2) {
+            // edge: {source:Node, target:Node, length:#, data:{}}
+            // p1:  {x:#, y:#}  source position in screen coords
+            // p2:  {x:#, y:#}  target position in screen coords
+            ctx.strokeStyle = "rgba(0,0,0, .333)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo (p1.x, p1.y);
+            ctx.lineTo (p2.x, p2.y);
+            ctx.stroke();
+          });
+
+          particleSystem.eachNode(function(node, point) {
+            // node: {mass:#, p:{x,y}, name:"", data:{}}
+            // p:   {x:#, y:#}  node position in screen coords
+
+            var width = 10
+            drawNode(point, width, node.data)
+          });
+
+        }
+      }
+    }
+
+    var sys = arbor.ParticleSystem(1, 400, 0.5);
+    //sys.parameters({gravity:true});
+    sys.renderer = renderer($('#viewport')[0]);
+
+    var users = $('#users').data('users');
+    for (var i=0; i<users.length; i++) {
+      var user = users[i];
+      sys.addNode(user.id, user);
+
+      var payments = user.sent_payments; 
+      for (var j=0; j<payments.length; j++) {
+        var payment = payments[j];
+        var receiverId = payment.receiver_id
+        sys.addEdge(user.id, receiverId, payment);
+      }
+    }
+
+  });
+  
+</script>
