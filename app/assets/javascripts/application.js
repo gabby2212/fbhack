@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require arbor
 //= require angular-unstable
 //= require angular-resource-unstable
 //= require_tree .

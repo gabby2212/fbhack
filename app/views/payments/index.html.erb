@@ -2,24 +2,23 @@
 
   <div ng-controller="MainCtrl">
 
-  </div
->
+  </div>
   <h1>Sent Payments</h1>
   <% if @sent_payments == nil%>
-    <p>You haven't paid anyone yet </p>
+  <p>You haven't paid anyone yet </p>
   <% else %>
-    <table class="center table table-hover" style="background-color: white">
+  <table class="center table table-hover" style="background-color: white">
 
     <thead><tr><th> From </th><th> Amount </th> </tr></thead>
     <% @sent_payments.each do |p| %>
-          <tr>
-          <td><%= p.receiver.email %></td>
-          <td><%=number_to_currency p.amount%></td>
+    <tr>
+      <td><%= p.receiver.email %></td>
+      <td><%=number_to_currency p.amount%></td>
 
-          </tr>
-          
+    </tr>
+    
     <% end %>
-    </table>
+  </table>
   <% end %>
 
 
@@ -27,9 +26,9 @@
 
   <h1>Received Payments</h1>
   <% if @received_payments == nil %>
-    <p>No one has paid you yet</p>
+  <p>No one has paid you yet</p>
   <% else %>
-    <table class="center table table-hover" style="background-color: white">
+  <table class="center table table-hover" style="background-color: white">
 
 
     <thead><tr><th> person </th><th> amount </th> </tr></thead>
@@ -46,10 +45,10 @@
 
   <div id="cy"></div>
 
-<div>
-  <%= link_to 'Create a payment', new_payment_path %>
+  <div>
+    <%= link_to 'Create a payment', new_payment_path %>
 
-  <%= link_to 'View Balances', relationships_path %>
-</div>
+    <%= link_to 'View Balances', relationships_path %>
+  </div>
 
 </div>
