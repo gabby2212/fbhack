@@ -15,10 +15,6 @@ class User < ActiveRecord::Base
   has_many :sent_payments, class_name: 'Payment', foreign_key: 'sender_id'
   has_many :received_payments, class_name: 'Payment', foreign_key: 'receiver_id' 
 
-	def initialize(name)
-		@name = name
-	end
-
 	def debtors
 		debts.keys
 	end

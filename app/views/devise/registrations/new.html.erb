@@ -1,6 +1,4 @@
 
-<h2>Sign up</h2>
-
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 <div class = "header">
@@ -60,27 +58,20 @@
       <div class= "box-content">
       <form>
         <div class = "sign-up-field">
-          <div class ="label-wrapper">Username:</div>
-          
-          <input id ="signup_username" name ="username" class ="input-medium" style="width:189px" type="text">
-        </div>
-        <div class = "sign-up-field">
           <div class ="label-wrapper">Email:</div>
-          <input id ="signup_email" name ="email" class ="input-medium" style="width:189px" type="text">
-          <div><%= f.label :email %><br />
-          <%= f.email_field :email, :autofocus => true %></div>
+          <!-- <input id ="signup_email" name ="email" class ="input-medium" style="width:189px" type="text"> -->
+          <div><%= f.email_field :email, :autofocus => true %></div>
         </div>
         <div class = "sign-up-field">
           <div class ="label-wrapper">Password:</div>
-          <input id ="signup_password" name ="password" class ="input-medium" style="width:189px"  type="password">
-           <div><%= f.label :password %><br />
-            <%= f.password_field :password %></div>
+       <!--    <input id ="signup_password" name ="password" class ="input-medium" style="width:189px"  type="password"> -->
+           <div style = "width:189px"><%= f.password_field :password %></div>
         </div>
         <div class = "sign-up-field">
           <div class ="label-wrapper">Confirm Password:</div>
-          <input id ="signup_password_confirm" name ="password_confirm" class ="input-medium" style="width:189px"  type="password">
-          <div><%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation %></div>
+          <!-- <input id ="signup_password_confirm" name ="password_confirm" class ="input-medium" style="width:189px"  type="password"> -->
+          
+          <div> <%= f.password_field :password_confirmation %></div>
         </div>
         <div class = "sign-up-field">
           <input class = "btn btn-primary btn-block" type= "submit" value="Sign up now!" >
