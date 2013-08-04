@@ -1,0 +1,14 @@
+<div>
+  <h1>Relationships</h1>
+  <ul>
+  <% @relationships.each do |r| %>
+    <li>From <%= r.from_id %> To <%= r.to_id %> for <%= r.amount %></li>
+  <% end %>
+  </ul>
+</div>
+
+
+
+<div>
+  <%= link_to 'Home', new_payment_path %>
+</div>

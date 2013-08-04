@@ -16,7 +16,6 @@ class PaymentsController < ApplicationController
     	@payment.amount = params[:amount]
     	if @payment.save
 		  	redirect_to payments_path
-		  	Relationship.path_finder
 		  	Relationship.update_relationship(current_user.id, @payment.receiver_id, @payment.amount)
     	else
       		render :new
