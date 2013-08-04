@@ -8,7 +8,7 @@ class Relationship < ActiveRecord::Base
 			relationship = Relationship.create(amount: amount, from_id: from, to_id: to, users_involved: users_involved)
 		else
 			if relationship.from_id == from
-				realtionship.amount += amount
+				relationship.amount += amount
 			else
 				relationship.amount -= amount
 			end
@@ -20,9 +20,6 @@ class Relationship < ActiveRecord::Base
 				relationship.delete
 			end
 			relationship.save
-		end
-
-
-			
+		end			
 	end
 end

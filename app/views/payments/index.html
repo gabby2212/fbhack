@@ -14,7 +14,7 @@
   <h1>Received Payments</h1>
   <ul>
   <% @received_payments.each do |payment| %>
-    <li>From <%= payment.sender.first_name %> for <%= number_to_currency payment.amount %></li>
+    <li>From <%= payment.sender.email %> for <%= number_to_currency payment.amount %></li>
   <% end %>
   </ul>
 </div>
