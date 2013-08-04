@@ -1,0 +1,71 @@
+/*the same stuff in the index page*/
+.body {
+	background: #e4e3d5;
+}
+#container-wrapper {
+	margin: 0px auto;
+	width: 1000px;
+}
+#header-wrapper {
+	margin: 0px auto;
+	width:  1000px;
+}
+.header{
+	height:60px ;
+	background: #373737;
+	border:1px solid #CCC;
+	/*width:1440px;*/
+	margin:0px auto;
+}
+
+.site-title {
+	padding-top: 25px;
+	padding-left: 50px; 
+ 	font-family: 'Indie Flower', cursive;
+ 	color:#FFFFFF;
+    font-size: 33px;
+    font-weight: 900;
+    float: left;
+    
+}
+
+#header-nav {
+	display: block;
+	float: right;
+	width: 310px;
+	margin-top: 15px;
+
+}
+
+/************************new stuff**********************************/
+#wrapper-account-name {
+	width: 200px;
+	display:inline-block;
+}
+#account-name {
+	color:	#FFFFFF;
+    font-size: 15px;
+    display:inline-block;
+}
+
+#wrapper-logout {
+	display:inline-block;
+	width: 100px;
+}
+
+.highlight {
+	padding: 9px 14px;
+	margin-bottom: 14px;
+	background-color: #f7f7f9;
+	border: 1px solid #e1e1e8;
+	border-radius: 4px;
+	webkit-border-radius:4px;
+	moz-border-radius:4px;
+}
+
+#pay-container {
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	border-top: 1px solid #CCCCCC;
+	width: 600px;
+}
