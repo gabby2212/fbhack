@@ -1,35 +1,43 @@
 <div class = "container-wrapper">
 
   <h1>Sent Payments</h1>
- 
-  <table class="center table table-hover" style="background-color: white">
-  <thead><tr><th> person </th><th> amount </th> </tr></thead>
-  <% @sent_payments.each do |p| %>
-        <tr>
-        <td><%= p.receiver.email %></td>
-        <td><%=number_to_currency p.amount%></td>
+  <% if @sent_payments == nil%>
+    <p>You haven't paid anyone yet </p>
+  <% else %>
+    <table class="center table table-hover" style="background-color: white">
 
-        </tr>
-        
+    <thead><tr><th> person </th><th> amount </th> </tr></thead>
+    <% @sent_payments.each do |p| %>
+          <tr>
+          <td><%= p.receiver.email %></td>
+          <td><%=number_to_currency p.amount%></td>
+
+          </tr>
+          
+    <% end %>
+    </table>
   <% end %>
-  </table>
 
 
 
   <h1>Received Payments</h1>
-  <table class="center table table-hover" style="background-color: white">
+  <% if @received_payments == nil %>
+    <p>No one has paid you yet</p>
+  <% else %>
+    <table class="center table table-hover" style="background-color: white">
 
-  <thead><tr><th> person </th><th> amount </th> </tr></thead>
-    <% @received_payments.each do |p| %>
+    <thead><tr><th> person </th><th> amount </th> </tr></thead>
+      <% @received_payments.each do |p| %>
 
-        <tr>
-        <td><%= p.sender.email %></td>
-        <td><%=number_to_currency p.amount%></td>
+          <tr>
+          <td><%= p.sender.email %></td>
+          <td><%=number_to_currency p.amount%></td>
 
-        </tr>
-        
-  <% end %>
-</table>
+          </tr>
+          
+    <% end %>
+    </table>
+    <% end %>
 
 <div>
   <%= link_to 'Create a payment', new_payment_path %>
