@@ -1,17 +1,21 @@
 <div class = "container-wrapper">
 
-  <h1>Sent Payments</h1>
- 
-  <table class="center table table-hover" style="background-color: white">
-  <thead><tr><th> person </th><th> amount </th> </tr></thead>
-  <% @sent_payments.each do |p| %>
-        <tr>
-        <td><%= p.receiver.email %></td>
-        <td><%=number_to_currency p.amount%></td>
+  <div ng-controller="MainCtrl">
 
-        </tr>
-        
-  <% end %>
+  </div>
+
+  <h1>Sent Payments</h1>
+
+  <table class="center table table-hover" style="background-color: white">
+    <thead><tr><th> person </th><th> amount </th> </tr></thead>
+    <% @sent_payments.each do |p| %>
+    <tr>
+      <td><%= p.receiver.email %></td>
+      <td><%=number_to_currency p.amount%></td>
+
+    </tr>
+
+    <% end %>
   </table>
 
 
@@ -19,21 +23,23 @@
   <h1>Received Payments</h1>
   <table class="center table table-hover" style="background-color: white">
 
-  <thead><tr><th> person </th><th> amount </th> </tr></thead>
+    <thead><tr><th> person </th><th> amount </th> </tr></thead>
     <% @received_payments.each do |p| %>
 
-        <tr>
-        <td><%= p.sender.email %></td>
-        <td><%=number_to_currency p.amount%></td>
+    <tr>
+      <td><%= p.sender.email %></td>
+      <td><%=number_to_currency p.amount%></td>
 
-        </tr>
-        
-  <% end %>
-</table>
+    </tr>
+
+    <% end %>
+  </table>
+
+  <div id="cy"></div>
 
 <div>
   <%= link_to 'Create a payment', new_payment_path %>
-  
+
   <%= link_to 'View Balances', relationships_path %>
 </div>
 
