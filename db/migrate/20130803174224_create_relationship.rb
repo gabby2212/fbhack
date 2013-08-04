@@ -4,6 +4,7 @@ class CreateRelationship < ActiveRecord::Migration
       t.decimal :amount
       t.integer :from_id
       t.integer :to_id
+      t.string :users_involved
     end
   end
 end
