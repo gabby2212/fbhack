@@ -1,24 +1,98 @@
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :first_name %><br />
-  <%= f.first_name_field :first_name, :autofocus => true %></div>
-
-  <div><%= f.label :last_name %><br />
-  <%= f.last_name_field :last_name, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "User/shared/links" %>
+<div class = "header">
+  <div id = "header-wrapper">
+    <div class="site-title"><strong>Ven-Owe</strong></div>
+    <div id="header-nav">
+      <form class="input-inline" >
+        <input type="text" style="margin-top:10px" class="input-medium" placeholder="Email">
+        <input type="password" style="margin-top:10px" class="input-medium" placeholder="Password">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div id = "container-wrapper">
+  <div class = "user-container">
+    <div id="myCarousel" class="carousel slide container" style="width:550px;height:370px">
+      <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1" class></li>
+      <li data-target="#myCarousel" data-slide-to="2" class></li>
+    </ol>  
+    <div class= "carousel-inner">
+      <div class = "active item carousel-image" >
+        <img class = "carousel-image" src = <%= asset_path('pay1.jpg')%> alt=""/>
+        <div class = "carousel-caption">
+        <h4>Find you friends to pay</h4>
+        <p>Find you friends to pay</p>
+        </div>
+      </div>
+      <div class="item carousel-image">
+        <img class = "carousel-image" src = <%= asset_path('pay2.png')%> alt=""/>
+        <div class = "carousel-caption">
+        <h4>Will not forget to pay your friends</h4>
+        <p>Will not forget to pay your friends</p>
+        </div>
+      </div>
+      <div class = "item carousel-image">
+        <img class = "carousel-image" src = <%= asset_path('pay3.jpg')%> alt=""/>
+        <div class = "carousel-caption">
+        <h4>Try it!!</h4>
+        <p>Just sign up and be our users</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+    </div>
+  </div>
+  <div class="signup-container">
+    <div id="sign-up-box">
+      <div class="box-title-wrapper">
+        <div class="box-title">
+          <h2>Sign up</h2>
+        </div>
+      </div>
+      <div class= "box-content">
+      <form>
+        <div class = "sign-up-field">
+          <div class ="label-wrapper">Username:</div>
+          
+          <input id ="signup_username" name ="username" class ="input-medium" style="width:189px" type="text">
+        </div>
+        <div class = "sign-up-field">
+          <div class ="label-wrapper">Email:</div>
+          <input id ="signup_email" name ="email" class ="input-medium" style="width:189px" type="text">
+          <div><%= f.label :email %><br />
+          <%= f.email_field :email, :autofocus => true %></div>
+        </div>
+        <div class = "sign-up-field">
+          <div class ="label-wrapper">Password:</div>
+          <input id ="signup_password" name ="password" class ="input-medium" style="width:189px"  type="password">
+           <div><%= f.label :password %><br />
+            <%= f.password_field :password %></div>
+        </div>
+        <div class = "sign-up-field">
+          <div class ="label-wrapper">Confirm Password:</div>
+          <input id ="signup_password_confirm" name ="password_confirm" class ="input-medium" style="width:189px"  type="password">
+          <div><%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation %></div>
+        </div>
+        <div class = "sign-up-field">
+          <input class = "btn btn-primary btn-block" type= "submit" value="Sign up now!" >
+        </div>
+    
+      </form> 
+        <div class ="sign-up-field">
+        <input class = "btn btn-info btn-block" type="submit" value="Login with Facebook">
+          </div>
+      </div>
+    
+      
+    </div>
+  </div>
+  <%end%>
