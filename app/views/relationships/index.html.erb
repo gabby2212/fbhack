@@ -1,5 +1,5 @@
 <div>
-  <h1>Relationships</h1>
+  <h1>Balances</h1>
   <ul>
   <% @relationships.each do |r| %>
     <li>From <%= User.find_by_id(r.from_id).email %> To <%= User.find_by_id(r.to_id).email %> for <%= r.amount %></li>
