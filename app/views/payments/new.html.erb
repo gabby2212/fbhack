@@ -30,28 +30,32 @@
     </div>
   <% end %>
   <legend>Make a payment</legend>
-  <div class="control-group">
-    <%= label_tag :to, 'To', class: 'control-label' %>
-    <div class="controls">
-      <%= text_field_tag :to, '', placeholder: 'john.doe@example.com', class: 'input-large' %>
-    </div>
-  </div>
 
-  <div class="control-group">
-    <%= label_tag :amount, 'Amount', class: 'control-label' %>
-    <div class="controls">
-    <div class="input-prepend">
-      <span class="add-on">$</span>
-      <%= number_field_tag :amount, '', placeholder: 10, class: 'input-small' %>
-    </div>
-    </div>
-	</div>
+    <div id = "pay-container" >
+      <div class="control-group">
+        <%= label_tag :to, 'To', class: 'control-label' %>
+        <div class="controls">
+          <%= text_field_tag :to, '', placeholder: 'john.doe@example.com', class: 'input-large' %>
+        </div>
+      </div>
 
-  <div class="control-group">
-    <div class="controls">
-      <%= submit_tag :pay, class: 'btn' %>
+      <div class="control-group">
+        <%= label_tag :amount, 'Amount', class: 'control-label' %>
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on">$</span>
+            <%= number_field_tag :amount, '', placeholder: 10, class: 'input-small' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          <%= submit_tag :pay, class: 'btn' %>
+        </div>
+      </div>
     </div>
-  </div>
+  
 
 <% end %>
 </div>
