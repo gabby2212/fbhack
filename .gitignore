@@ -14,5 +14,6 @@
 /log/*.log
 /tmp
 
-
+node_modules/
 .DS_store
+dump.rdb

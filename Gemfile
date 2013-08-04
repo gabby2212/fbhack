@@ -24,6 +24,7 @@ end
 
 gem 'jquery-rails'
 gem 'active_model_serializers'
+gem 'redis'
 
 group :test, :development do
   gem 'minitest-spec-rails'
