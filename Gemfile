@@ -19,9 +19,11 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'arbor-rails'
 end
 
 gem 'jquery-rails'
+gem 'active_model_serializers'
 
 group :test, :development do
   gem 'minitest-spec-rails'
