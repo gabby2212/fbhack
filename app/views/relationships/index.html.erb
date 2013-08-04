@@ -2,7 +2,7 @@
   <h1>Relationships</h1>
   <ul>
   <% @relationships.each do |r| %>
-    <li>From <%= r.from_id %> To <%= r.to_id %> for <%= r.amount %></li>
+    <li>From <%= User.find_by_id(r.from_id).email %> To <%= User.find_by_id(r.to_id).email %> for <%= r.amount %></li>
   <% end %>
   </ul>
 </div>
