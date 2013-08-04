@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ven-Owe</title>
-    <%= stylesheet_link_tag    "payment", :media => "all" %>
-    <%= stylesheet_link_tag    "bootstrap-responsive", :media => "all" %>
-    <%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
-    <%= stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Indie+Flower", :media => "all" %>
-    <%= stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Varela+Round", :media => "all" %>
-</head>
-<body class ="body">
+
    
 <div class = "header">
 	<div id = "header-wrapper">
 		<div class = "site-title"><strong>Ven-Owe</strong></div>
-		<div id = "header-nav">
+		<div id = "logout-header-nav">
 			<!--this is the place to show the username and logout-->
 			<div id = "wrapper-account-name">
 				<div id = "account-name">Account: 
@@ -27,29 +17,28 @@
 </div>
 <div id = "container-wrapper">
 	<div class = "highlight">
-	<div id = "pay-container">
-		<div id = "paytosome-container">
-			<div class = "input-group" style = "margin-left:23px">
-				<button style =" height:30px; width:100px">Pay</button>
-				<input type="text" class= "input-large" style = "height:30px; margin-top:10px; width:450px" placeholder="Pay to Someone">
+		<div id = "pay-container">
+			<div id = "paytosome-container">
+				<div class = "input-group" style = "margin-left:23px">
+					<button style =" height:29px; width:100px">Pay</button>
+					<input type="text" class= "input-large" style = "margin-left:-4px; margin-top:10px;height:21px; width:450px" placeholder="Pay to Someone">
+				</div>
+				<div id = "amount-container">
+					<textarea id = "payment-message" placeholder = "$10 for blahblahblah"></textarea>	
+				</div>
+			</div>
+
+			
+
+			<div id = "message-container">
+
+
 			</div>
 		</div>
-		<div id = "amount-container">
-			<>	
-	    </div>
-
-		<div id = "message-container">
-
-
-		</div>
-	</div>
 	</div>
 </div>
 
- <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" %>
- <%= javascript_include_tag "bootstrap" %>
- <%= javascript_include_tag "bootstrap.min" %>
+
+
 
  	
-</body>
-</html>
