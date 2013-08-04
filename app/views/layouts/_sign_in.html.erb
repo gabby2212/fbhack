@@ -1,18 +1,37 @@
+<% if current_user.present? %>
 <div class = "header">
-  <%= form_for(User.new, :as => 'user', :url => session_path('user')) do |f| %>
   <div id = "header-wrapper">
-    <div class="site-title"><strong>Ven-Owe</strong></div>
-    <div id="header-nav">
-      <div class="input-inline" >
-       <!--  <input type="text" style="margin-top:10px" class="input-medium" placeholder="Email"> -->
-        <div><%= f.email_field :email, :autofocus => true %></div>
-
-        <!-- <input type="password" style="margin-top:10px" class="input-medium" placeholder="Password"> -->
-        <div><%= f.password_field :password, :autofocus => true %></div>
-
-        <button type="submit" class="btn btn-primary">Sign in</button>
+    <div class = "site-title"><strong>Ven-Owe</strong></div>
+    <div id = "logout-header-nav">
+      <!--this is the place to show the username and logout-->
+      <div id = "wrapper-account-name">
+        <div id = "account-name">Account:    <%= current_user.email%> 
+        </div>
       </div>
+            <div id = "wrapper-logout">
+        <button type="submit" class="btn btn-primary" style ="display:inline-block;">Log out</button>
+       </div>
     </div>
   </div>
-  <% end %>
 </div>
+  
+<% else %>
+  <div class = "header">
+  <%= form_for(User.new, :as => 'user', :url => session_path('user')) do |f| %>
+    <div id = "header-wrapper">
+      <div class="site-title"><strong>Ven-Owe</strong></div>
+      <div id="header-nav">
+        <div class="input-inline" >
+         <!--  <input type="text" style="margin-top:10px" class="input-medium" placeholder="Email"> -->
+          <div><%= f.email_field :email, :autofocus => true %></div>
+
+          <!-- <input type="password" style="margin-top:10px" class="input-medium" placeholder="Password"> -->
+          <div><%= f.password_field :password, :autofocus => true %></div>
+
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </div>
+      <% end %>
+    </div>
+</div>
+<% end %>
