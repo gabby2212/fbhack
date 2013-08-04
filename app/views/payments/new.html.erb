@@ -1,4 +1,5 @@
 
+   
 <div class = "header">
 	<div id = "header-wrapper">
 		<div class = "site-title"><strong>Ven-Owe</strong></div>
@@ -14,18 +15,18 @@
 		</div>
 	</div>
 </div>
-<%= form_for [@test] do |f| %>
+<%= form_for [@payment] do |f| %>
 <div id = "container-wrapper">
 	<div class = "highlight">
 		<div id = "pay-container">
 			<div id = "paytosome-container">
 				<div class = "input-group" style = "margin-left:23px">
 					<button style =" height:29px; width:100px">Pay</button>
-					<input type="text" class= "input-large" style = "margin-left:-4px; margin-top:10px;height:21px; width:450px" placeholder="Pay to Someone">
+					<<!-- input type="text" class= "input-large" style = "margin-left:-4px; margin-top:10px;height:21px; width:450px" placeholder="Pay to Someone"> -->
 					<%= f.text_field :receiver_id%>
 				</div>
 				<div id = "amount-container">
-					<textarea id = "payment-message" placeholder = "$10 for blahblahblah"></textarea>
+					<!-- <textarea id = "payment-message" placeholder = "$10 for blahblahblah"></textarea> -->
 					<%= f.text_field :amount %>	
 				</div>
 				<div id = "send-message-container">
@@ -45,3 +46,7 @@
 </div>
 <% end %>
 
+
+
+
+ 	
