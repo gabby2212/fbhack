@@ -1,5 +1,6 @@
-
+<div class = "container-wrapper">
 <h3>People You Owe</h3>
+
 <table class="center table table-hover" style="background-color: white">
         <thead><tr><th> person </th><th> amount </th> </tr></thead>
         <% @relationships.each do |r| %>
@@ -38,9 +39,7 @@
         
     </table>
 
-
-
-
 <div>
   <%= link_to 'Home', new_payment_path %>
+</div>
 </div>

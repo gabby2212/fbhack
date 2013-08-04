@@ -1,11 +1,13 @@
-<div>
+<div class = "container-wrapper">
+
   <h1>Your balance: <%= number_to_currency current_user.balance %></h1>
-</div>
-<div>
+
+
   <h1>Sent Payments</h1>
-  <% @sent_payments.each do |p| %>
+ 
   <table class="center table table-hover" style="background-color: white">
   <thead><tr><th> person </th><th> amount </th> </tr></thead>
+  <% @sent_payments.each do |p| %>
         <tr>
         <td><%= p.receiver.email %></td>
         <td><%=number_to_currency p.amount%></td>
@@ -14,13 +16,15 @@
         
        </table>
   <% end %>
-</div>
 
-<div>
+
+
   <h1>Received Payments</h1>
-  <% @received_payments.each do |p| %>
   <table class="center table table-hover" style="background-color: white">
+
   <thead><tr><th> person </th><th> amount </th> </tr></thead>
+    <% @received_payments.each do |p| %>
+
         <tr>
         <td><%= p.sender.email %></td>
         <td><%=number_to_currency p.amount%></td>
@@ -29,10 +33,12 @@
         
        </table>
   <% end %>
-</div>
+
 
 <div>
   <%= link_to 'Create a payment', new_payment_path %>
-  <br></br>
+  
   <%= link_to 'View Balances', relationships_path %>
+</div>
+
 </div>
