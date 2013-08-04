@@ -33,10 +33,19 @@
 	border-left: 1px solid #CCCCCC;
 	border-right: 1px solid #CCCCCC;
 	border-top: 1px solid #CCCCCC;
-	width: 600px;
+	width: 700px;
 }
 #payment-message {
-	margin-left: 22px;
+	margin-left: 70px;
 	margin-top: -11px;
 	width: 551px;
+}
+
+#send-message-container {
+	border-left:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+	margin-left: 70px;
+	margin-top: -11px;
+	width:551px;
 }
