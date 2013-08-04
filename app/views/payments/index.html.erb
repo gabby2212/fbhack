@@ -1,44 +1,46 @@
 <div class = "container-wrapper">
 
+  <div ng-controller="MainCtrl">
+
+  </div>
   <h1>Sent Payments</h1>
   <% if @sent_payments == nil%>
-    <p>You haven't paid anyone yet </p>
+  <p>You haven't paid anyone yet </p>
   <% else %>
-    <table class="center table table-hover" style="background-color: white">
+  <table class="center table table-hover" style="background-color: white">
 
     <thead><tr><th> From </th><th> Amount </th> </tr></thead>
     <% @sent_payments.each do |p| %>
-          <tr>
-          <td><%= p.receiver.email %></td>
-          <td><%=number_to_currency p.amount%></td>
-
-          </tr>
-          
+    <tr>
+      <td><%= p.receiver.email %></td>
+      <td><%=number_to_currency p.amount%></td>
+    </tr>
     <% end %>
-    </table>
+  </table>
   <% end %>
-
-
 
   <h1>Received Payments</h1>
   <% if @received_payments == nil %>
-    <p>No one has paid you yet</p>
+  <p>No one has paid you yet</p>
   <% else %>
-    <table class="center table table-hover" style="background-color: white">
+  <table class="center table table-hover" style="background-color: white">
 
-    <thead><tr><th> To </th><th> Amount </th> </tr></thead>
-      <% @received_payments.each do |p| %>
+    <thead><tr><th> person </th><th> amount </th> </tr></thead>
+    <% @received_payments.each do |p| %>
 
-          <tr>
-          <td><%= p.sender.email %></td>
-          <td><%=number_to_currency p.amount%></td>
+    <tr>
+      <td><%= p.sender.email %></td>
+      <td><%=number_to_currency p.amount%></td>
 
-          </tr>
-          
+    </tr>
+
     <% end %>
-    </table>
-    <% end %>
+  </table>
+  <% end %>
+  
+  <div id="cy"></div>
 
 <%= render 'layouts/footer' %>
+
 
 </div>

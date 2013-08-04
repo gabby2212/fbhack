@@ -7,4 +7,5 @@ class RelationshipsController < ApplicationController
 		Rails.logger.debug("#{@relationships}")
 		@relationships
 	end
+
 end

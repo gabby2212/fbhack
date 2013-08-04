@@ -4,7 +4,14 @@ VenOwe::Application.routes.draw do
   resources :payments
   resources :relationships
 
-  match 'graph' => 'welcome#test'
+  match 'test' => 'welcome#test'
+
+  devise_scope :user do
+    match 'users/json(.:format)'  => 'users#json', via: :get
+    match 'users/relationships(.:format)'  => 'users#relationships', via: :get
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
