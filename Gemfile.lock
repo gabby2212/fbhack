@@ -30,6 +30,14 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+<<<<<<< HEAD
+=======
+    angular-gem (1.1.5)
+      coffee-script (~> 2.2.0)
+      railties (>= 3.1)
+    arbor-rails (0.0.4)
+      railties (>= 3.1.0, < 5.0)
+>>>>>>> dccf495040c661d422a790ad1ec4727c858d48e4
     arel (3.0.2)
     bcrypt-ruby (3.1.0)
     builder (3.0.4)
@@ -127,6 +135,11 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+<<<<<<< HEAD
+=======
+  angular-gem (~> 1.1.5)
+  arbor-rails
+>>>>>>> dccf495040c661d422a790ad1ec4727c858d48e4
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails

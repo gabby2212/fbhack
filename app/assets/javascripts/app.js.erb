@@ -1,0 +1,186 @@
+var app = angular.module('app', ["ngResource"]);
+
+// add csrf token to headers
+app
+
+.config(["$httpProvider", "$routeProvider", "$locationProvider", function($httpProvider, $routeProvider, $locationProvider) {
+	$httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+}])
+
+
+// app.config(["$routeProvider", function($routeProvider) {
+//   $routeProvider
+//   .when('/', {templateUrl: '<%= asset_path "home.html" %>', controller: 'HomeCtrl'})
+//   .when('/welcome', {templateUrl: '<%= asset_path "welcome.html" %>', controller: 'WelcomeCtrl'})
+//   .when('/home', {templateUrl: '<%= asset_path "home.html" %>', controller: 'HomeCtrl'})
+//   .when('/messages', {templateUrl: '<%= asset_path "messages.html" %>', controller: 'MessagesCtrl'})
+//   .when('/notifications', {templateUrl: '<%= asset_path "notifications.html" %>', controller: 'NotificationsCtrl'})
+//   .when('/lessons', {templateUrl: '<%= asset_path "lesson.html" %>', controller: 'LessonCtrl'})
+//   .when('/payments', {templateUrl: '<%= asset_path "payments.html" %>', controller: 'ScheduleCtrl'})
+//   .when('/welcome/teachers/:step', {templateUrl:'<%= asset_path "welcome/teachers.html" %>', controller: 'WelcomeTeachersCtrl'})
+//   .when('/welcome/students', {templateUrl:'<%= asset_path "welcome/students.html" %>', controller: 'WelcomeStudentsCtrl'})
+
+//   .when('/teachers/:username', { templateUrl: '<%= asset_path "teachers/show.html" %>', controller: 'TeacherShowCtrl'})
+//   .when('/postings/:id', { templateUrl: '<%= asset_path "postings/show.html" %>', controller: 'PostingShowCtrl'})
+
+//   .when('/search/:type/:category', {templateUrl:'<%= asset_path "search.html" %>', controller: 'SearchCtrl'})
+
+//   .when('/settings', {templateUrl:'<%= asset_path "settings.html" %>', controller: 'SettingsCtrl'})
+//   .when('/settings/:tab/:token', {templateUrl:'<%= asset_path "settings.html" %>', controller: 'SettingsCtrl'})
+
+
+// }])
+
+.factory("UserService", [ "$resource", function($resource){
+  return $resource('/users/json.json'); 
+}])
+
+.factory("RelationshipService", [ "$resource", function($resource){
+  return $resource('/users/relationships.json'); 
+}])
+
+.controller("MainCtrl", [ "$scope", "UserService", "RelationshipService", 
+  function ($scope, UserService, RelationshipService) {
+
+    console.log("sup");
+    $scope.userData = UserService.get({}, {}, function(response){
+      var shit = response.data; 
+
+      var sup = RelationshipService.get({}, {}, function(response){
+        var shit2  = response.data;
+
+        var el = {};
+        el.nodes = [];
+        el.edges = [];
+
+        for (var i = 0; i < shit.length; i++){
+          console.log(shit[i]);
+          var d = {};
+          d.id = (shit[i].id).toString();
+          if (shit[i].first_name)
+            d.name = shit[i].first_name;
+          else
+            d.name = shit[i].email;
+          d.weight = 100;
+          d.height = 200;
+          el.nodes.push({data: d});
+        }
+        console.log(el.nodes);
+
+        for (var j = 0; j < shit2.length; j++){
+          console.log(shit2[j]);
+          var e = {};
+          e.source = shit2[j].from_id;
+          e.target = shit2[j].to_id;
+          e.amount = shit2[j].amount;
+          el.edges.push({data: e});
+        }
+
+
+        $(loadCy = function(){
+
+          options = {
+            showOverlay: false,
+            minZoom: 0.5,
+            maxZoom: 2,
+
+            style: cytoscape.stylesheet()
+            .selector('node')
+            .css({
+              'content': 'data(name)',
+              'font-family': 'helvetica',
+              'font-size': 14,
+              'text-outline-width': 3,
+              'text-outline-color': '#888',
+              'text-valign': 'center',
+              'color': '#fff',
+              'width': 'mapData(weight, 30, 80, 20, 50)',
+              'height': 'mapData(height, 0, 200, 10, 45)',
+              'border-color': '#fff'
+            })
+            .selector(':selected')
+            .css({
+              'background-color': '#000',
+              'line-color': '#000',
+              'target-arrow-color': '#000',
+              'text-outline-color': '#000'
+            })
+            .selector('edge')
+            .css({
+              'content': 'data(amount)',
+              'width': 2,
+              'target-arrow-shape': 'triangle'
+            })
+            ,
+
+            elements: el,
+
+      // elements: ,
+
+      ready: function(){
+        cy = this;
+      }
+    };
+
+    $('#cy').cytoscape(options);
+  })
+});
+
+
+// });
+});
+
+  // loadCy = $scope.sup = function(){
+
+  //   options = {
+  //     showOverlay: false,
+  //     minZoom: 0.5,
+  //     maxZoom: 2,
+
+  //     style: cytoscape.stylesheet()
+  //     .selector('node')
+  //     .css({
+  //       'content': 'data(name)',
+  //       'font-family': 'helvetica',
+  //       'font-size': 14,
+  //       'text-outline-width': 3,
+  //       'text-outline-color': '#888',
+  //       'text-valign': 'center',
+  //       'color': '#fff',
+  //       'width': 'mapData(weight, 30, 80, 20, 50)',
+  //       'height': 'mapData(height, 0, 200, 10, 45)',
+  //       'border-color': '#fff'
+  //     })
+  //     .selector(':selected')
+  //     .css({
+  //       'background-color': '#000',
+  //       'line-color': '#000',
+  //       'target-arrow-color': '#000',
+  //       'text-outline-color': '#000'
+  //     })
+  //     .selector('edge')
+  //     .css({
+  //       'content': 'data(amount)',
+  //       'width': 2,
+  //       'target-arrow-shape': 'triangle'
+  //     })
+  //     ,
+
+  //     elements: el,
+
+  //     // elements: ,
+
+  //     ready: function(){
+  //       cy = this;
+  //     }
+  //   };
+
+
+}])
+
+
+
+
+
+
+
