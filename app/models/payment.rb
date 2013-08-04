@@ -1,10 +1,18 @@
 class Payment < ActiveRecord::Base
-	belongs_to :sender, class_name: 'User'
-	belongs_to :receiver, class_name: 'User'
-	attr_accessible :amount, :sender_id, :receiver_id
+  belongs_to :sender, class_name: 'User'
+  belongs_to :receiver, class_name: 'User'
 
+  validates_presence_of :sender
+  validates_presence_of :receiver
+  validates_numericality_of :amount, greater_than: 0
+  validate :sender_not_equal_receiver
 
-	def sent_payments(user)
-		@relationships = Relationship.find(:all, :conditions => { :from_id => user.id})
-	end
+  private
+
+  def sender_not_equal_receiver
+    if sender && receiver && sender == receiver
+      errors[:base].push("You cannot pay money to yourself")
+    end
+  end
+
 end
